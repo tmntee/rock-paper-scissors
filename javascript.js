@@ -75,41 +75,12 @@ function playRound(playerSelection, computerSelection)
     return result
 }
 
-function game()
-{   
-    let playerPoints = 0
-    let computerPoints = 0
+const rockBtn = document.querySelector("#rockButton");
+const paperBtn = document.querySelector("#paperButton");
+const scissorBtn = document.querySelector("#scissorsButton");
 
-    console.log("Welcome to a game of Rock, Paper, Scissors!")
-    for (let num = 0; num < 5; num++)
-    {
-        console.log("Please input a move.")
-        let playerChoice = prompt()
-        const result = playRound(playerChoice, getComputerChoice())
-        if (result.includes("Win"))
-        {
-            playerPoints++
+rockBtn.addEventListener('click', func = () => { playRound("rock", getComputerChoice())});
+paperBtn.addEventListener('click', func = () => { playRound("paper", getComputerChoice())} );
+scissorBtn.addEventListener('click', func = () => { playRound("scissors", getComputerChoice())});
 
-        } else if (result.includes("Lose"))
-        {
-            computerPoints++
-        }
-        console.log(result)
-        console.log ("Player matches won: " + playerPoints + " | Computer matches won: " + computerPoints)
-    }
 
-    if (computerPoints < playerPoints)
-    {
-        console.log("You won! :D")
-    } 
-    else if (computerPoints > playerPoints)
-    {
-        console.log("You lost! :C")
-    } 
-    else 
-    {
-        console.log("Tie! :O")
-    }
-}
-
-game()
