@@ -1,24 +1,19 @@
 function getComputerChoice()
 {
-    const num = Math.random() * 10;
+    const num = Math.floor(Math.random() * 3);
     console.log(num)
 
-    let choice = " "
-
-    if(num < 3)
+    switch (num)
     {
-        choice = "rock"
-    } 
-    else if (num >= 3 && num < 6)
-    {
-        choice = "paper"
+        case 0:
+            return "rock";
+        
+        case 1:
+            return "paper";
+        
+        case 2: 
+            return "scissors";
     }
-    else if (num >=6 && num < 10)
-    {
-        choice = "scissors"
-    }
-
-    return choice
 }
 
 console.log(getComputerChoice())
