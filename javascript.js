@@ -16,7 +16,7 @@ function getComputerChoice()
     }
 }
 
-console.log(getComputerChoice())
+const resultDisplay = document.querySelector("#resultDisplay");
 
 function playRound(playerSelection, computerSelection)
 {   
@@ -67,7 +67,8 @@ function playRound(playerSelection, computerSelection)
             result = "Tie! Both played Scissors"
         }
     }
-    return result
+
+    resultDisplay.textContent = result;
 }
 
 const rockBtn = document.querySelector("#rockButton");
@@ -77,5 +78,6 @@ const scissorBtn = document.querySelector("#scissorsButton");
 rockBtn.addEventListener('click', func = () => { playRound("rock", getComputerChoice())});
 paperBtn.addEventListener('click', func = () => { playRound("paper", getComputerChoice())} );
 scissorBtn.addEventListener('click', func = () => { playRound("scissors", getComputerChoice())});
+
 
 
