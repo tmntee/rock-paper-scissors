@@ -18,6 +18,19 @@ function getComputerChoice()
 
 const resultDisplay = document.querySelector("#resultDisplay");
 
+let computerScore = 0;
+let playerScore = 0;
+let roundCounter = 0;
+
+
+function resetGameValues()
+{
+    computerScore = 0;
+    playerScore = 0;
+    roundCounter = 0;
+}
+
+
 function playRound(playerSelection, computerSelection)
 {   
     let result
@@ -26,49 +39,76 @@ function playRound(playerSelection, computerSelection)
     {
         if (computerSelection.includes("paper"))
         {
-            result = "You Lose! Paper beats Rock"
+            result = "You Lose! Paper beats Rock."
         } 
         else if (computerSelection.includes("rock"))
         {
-            result = "Tie! Both played Rock"
+            result = "Tie! Both played Rock."
         }
         else if (computerSelection.includes("scissors"))
         {
-            result = "You Win! Rock beats Scissors"
+            result = "You Win! Rock beats Scissors."
         }
     } 
     else if (playerSelection.includes("paper"))
     {
         if (computerSelection.includes("paper"))
         {
-            result = "Tie! Both played Paper"
+            result = "Tie! Both played Paper."
         } 
         else if (computerSelection.includes("rock"))
         {
-            result = "You Win! Paper beats Rock"
+            result = "You Win! Paper beats Rock."
         }
         else if (computerSelection.includes("scissors"))
         {
-            result = "You Lose! Scissors beats Paper"
+            result = "You Lose! Scissors beats Paper."
         }
     } 
     else if (playerSelection.includes("scissors"))
     {
         if (computerSelection.includes("paper"))
         {
-            result = "You Win! Scissors beats Paper"
+            result = "You Win! Scissors beats Paper."
         } 
         else if (computerSelection.includes("rock"))
         {
-            result = "You Lose! Rock beats Scissors"
+            result = "You Lose! Rock beats Scissors."
         }
         else if (computerSelection.includes("scissors"))
         {
-            result = "Tie! Both played Scissors"
+            result = "Tie! Both played Scissors."
         }
     }
 
-    resultDisplay.textContent = result;
+    if (result.includes("Win"))
+    {
+        playerScore++;
+    }
+    else if (result.includes("Lose"))
+    {
+        computerScore++;
+    }
+
+    roundCounter++;
+    resultDisplay.textContent = `Round ${roundCounter} out of 5:` + result + `Player Score: ${playerScore} | Computer Score: ${computerScore} `;
+
+    if (roundCounter === 5)
+    {   
+        if (playerScore > computerScore)
+        {
+            resultDisplay.textContent += 'Player wins! :D';
+        }
+        else if (playerScore === computerScore)
+        {
+            resultDisplay.textContent += 'Tie! :/';
+        }
+        else if (computerScore > playerScore)
+        {
+            resultDisplay.textContent += 'Computer wins! :C'
+        }
+        resetGameValues();
+    }
 }
 
 const rockBtn = document.querySelector("#rockButton");
